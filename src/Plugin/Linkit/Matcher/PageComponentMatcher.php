@@ -78,6 +78,7 @@ class PageComponentMatcher extends EntityMatcher {
     // When it comes to bundle configration, use Paragraph bundles.
     $form['bundle_restrictions'] = $form_for_paragraph['bundle_restrictions'];
     $form['bundle_grouping'] = $form_for_paragraph['bundle_grouping'];
+    $form['bundle_restrictions']['bundles']['#title'] = $this->t('Restrict suggestions to the selected Paragraph bundles who form Page components');
 
     return $form;
   }
