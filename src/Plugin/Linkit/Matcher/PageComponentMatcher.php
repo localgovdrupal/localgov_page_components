@@ -16,8 +16,8 @@ use Drupal\linkit\Suggestion\SuggestionCollection;
  * the related entity type's bundles.  This plugin provides suggestions for
  * Paragraphs library item entities.  But that entity type has no bundle,
  * instead it refers to various bundles of the Paragraph entity type.  We want
- * to filter the suggestions based on those bundle names.  To achieve this,
- * we pretend that we are working on the Paragraph entity.
+ * to filter the suggestions based on those Paragraph bundle names.  To achieve
+ * this, we pretend that we are working on the Paragraph entity.
  *
  * ## Example
  * We have four Paragraph bundles available: A, B, C, and D.
@@ -156,8 +156,8 @@ class PageComponentMatcher extends EntityMatcher {
   /**
    * Bundle filter.
    *
-   * Is the given Paragraph library item entity refers to a Paragraph bundle
-   * belonging to one of our preconfigured bundles?
+   * Does the given Paragraph library item entity refer to a Paragraph bundle
+   * which belongs to one of our preconfigured Paragraph bundle list?
    */
   protected function isTargetParagraphBundle(EntityInterface $paragraphs_library_item): bool {
 
