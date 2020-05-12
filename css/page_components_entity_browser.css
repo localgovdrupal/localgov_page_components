@@ -9,9 +9,9 @@
 
 .entities-list > .item-container::before {
   /* Character code for the "Up and down arrow". */
-  content: "\21c5"
+  content: "\21c5";
 }
 .entities-list > .item-container {
   display: grid;
-  grid-template-columns: 3% 65% 20% 12%
+  grid-template-columns: 3% 65% 20% 12%;
 }
