@@ -13,17 +13,17 @@ declare(strict_types = 1);
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\gull_page_components\Constants;
+use Drupal\localgov_page_components\Constants;
 use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_help().
  */
-function gull_page_components_help($route_name, RouteMatchInterface $route_match) {
+function localgov_page_components_help($route_name, RouteMatchInterface $route_match) {
 
   switch ($route_name) {
-    // Main module help for the gull_page_components module.
-    case 'help.page.gull_page_components':
+    // Main module help for the localgov_page_components module.
+    case 'help.page.localgov_page_components':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('Disguise &quot;Paragraphs library&quot; as &quot;Page components&quot; for better UX.') . '</p>';
@@ -38,7 +38,7 @@ function gull_page_components_help($route_name, RouteMatchInterface $route_match
  *
  * Renames "Add content > Paragraphs" menu label to "Page components".
  */
-function gull_page_components_menu_links_discovered_alter(&$links) {
+function localgov_page_components_menu_links_discovered_alter(&$links) {
 
   $has_paragraphs_lib_link = array_key_exists(Constants::PARAGRAPHS_LIB_LIST_MENU_LINK, $links);
   if ($has_paragraphs_lib_link) {
@@ -51,7 +51,7 @@ function gull_page_components_menu_links_discovered_alter(&$links) {
  *
  * Renames "Add library item" to "Add Page component".
  */
-function gull_page_components_menu_local_actions_alter(&$local_actions) {
+function localgov_page_components_menu_local_actions_alter(&$local_actions) {
 
   $has_paragraphs_lib_add_action = array_key_exists(Constants::PARAGRAPHS_LIB_ADD_ACTION, $local_actions);
   if ($has_paragraphs_lib_add_action) {
@@ -64,7 +64,7 @@ function gull_page_components_menu_local_actions_alter(&$local_actions) {
  *
  * Renames the "Paragraphs" tab to "Page compoments".
  */
-function gull_page_components_local_tasks_alter(&$local_tasks) {
+function localgov_page_components_local_tasks_alter(&$local_tasks) {
 
   $has_paragraphs_local_task = array_key_exists(Constants::PARAGRAPHS_LIB_LISTING_ROUTE, $local_tasks);
   if ($has_paragraphs_local_task) {
@@ -77,7 +77,7 @@ function gull_page_components_local_tasks_alter(&$local_tasks) {
  *
  * Relabels "Paragraphs library item" entity type to "Page component".
  */
-function gull_page_components_entity_type_alter(array &$entity_types) {
+function localgov_page_components_entity_type_alter(array &$entity_types) {
 
   $has_def_for_paragraphs_lib = array_key_exists(Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID, $entity_types);
   if (!$has_def_for_paragraphs_lib) {
@@ -95,7 +95,7 @@ function gull_page_components_entity_type_alter(array &$entity_types) {
  *
  * Relabels View title from "Paragraphs library" to "Page components".
  */
-function gull_page_components_views_pre_render(ViewExecutable $view) {
+function localgov_page_components_views_pre_render(ViewExecutable $view) {
 
   $is_paragraphs_lib_list_view = ($view->id() === Constants::PARAGRAPHS_LIB_LIST_VIEW_ID);
   $is_paragraphs_lib_list_view_page_display = ($view->current_display === Constants::PARAGRAPHS_LIB_LIST_VIEW_DISPLAY_ID);
@@ -113,7 +113,7 @@ function gull_page_components_views_pre_render(ViewExecutable $view) {
  * @see https://www.drupal.org/project/entity_browser/issues/3014194#comment-12864945
  * @see https://www.drupal.org/project/paragraphs/issues/2901390
  */
-function gull_page_components_entity_presave(EntityInterface $entity) {
+function localgov_page_components_entity_presave(EntityInterface $entity) {
 
   // Fix langcode is empty when you use entity browser x inline entity form.
   if ($entity->getEntityType()->id() == 'paragraph') {
@@ -134,7 +134,7 @@ function gull_page_components_entity_presave(EntityInterface $entity) {
  * - Add our custom styling to the Entity browser.
  * - Reposition the Entity browser launch button.
  */
-function gull_page_components_field_widget_multivalue_entity_browser_entity_reference_form_alter(&$element, FormStateInterface $form_state, $context) {
+function localgov_page_components_field_widget_multivalue_entity_browser_entity_reference_form_alter(&$element, FormStateInterface $form_state, $context) {
 
   $field_name = $context['items']->getFieldDefinition()->getName();
   $is_page_component_field = ($field_name === Constants::PAGE_COMPONENT_FIELD_NAME);
@@ -142,7 +142,7 @@ function gull_page_components_field_widget_multivalue_entity_browser_entity_refe
     return;
   }
 
-  $element['#attached']['library'][] = 'gull_page_components/entity_browser';
+  $element['#attached']['library'][] = 'localgov_page_components/entity_browser';
 
   // Push down the select button under the selected entities.
   $has_entity_browser_launch_button = array_key_exists(Constants::ENTITY_BROWSER_LAUNCH_BUTTON, $element);

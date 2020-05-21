@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\gull_page_components\Plugin\Linkit\Matcher;
+namespace Drupal\localgov_page_components\Plugin\Linkit\Matcher;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;

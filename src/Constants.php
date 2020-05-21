@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\gull_page_components;
+namespace Drupal\localgov_page_components;
 
 /**
  * Constants for this module.

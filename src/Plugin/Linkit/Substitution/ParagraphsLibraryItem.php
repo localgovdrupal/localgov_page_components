@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\gull_page_components\Plugin\Linkit\Substitution;
+namespace Drupal\localgov_page_components\Plugin\Linkit\Substitution;
 
 use Drupal\Component\Plugin\PluginBase;
 use Drupal\Core\Entity\EntityInterface;
