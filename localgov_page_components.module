@@ -42,7 +42,7 @@ function localgov_page_components_menu_links_discovered_alter(&$links) {
 
   $has_paragraphs_lib_link = array_key_exists(Constants::PARAGRAPHS_LIB_LIST_MENU_LINK, $links);
   if ($has_paragraphs_lib_link) {
-    $links[Constants::PARAGRAPHS_LIB_LIST_MENU_LINK]['title'] = t('@title', ['title' => Constants::PAGE_COMPONENT_LIST_LABEL]);
+    $links[Constants::PARAGRAPHS_LIB_LIST_MENU_LINK]['title'] = t('@title', ['@title' => Constants::PAGE_COMPONENT_LIST_LABEL]);
   }
 }
 
@@ -55,7 +55,7 @@ function localgov_page_components_menu_local_actions_alter(&$local_actions) {
 
   $has_paragraphs_lib_add_action = array_key_exists(Constants::PARAGRAPHS_LIB_ADD_ACTION, $local_actions);
   if ($has_paragraphs_lib_add_action) {
-    $local_actions[Constants::PARAGRAPHS_LIB_ADD_ACTION]['title'] = t('@title', ['title' => Constants::PAGE_COMPONENT_ADD_ACTION_LABEL]);
+    $local_actions[Constants::PARAGRAPHS_LIB_ADD_ACTION]['title'] = t('@title', ['@title' => Constants::PAGE_COMPONENT_ADD_ACTION_LABEL]);
   }
 }
 
@@ -68,7 +68,7 @@ function localgov_page_components_local_tasks_alter(&$local_tasks) {
 
   $has_paragraphs_local_task = array_key_exists(Constants::PARAGRAPHS_LIB_LISTING_ROUTE, $local_tasks);
   if ($has_paragraphs_local_task) {
-    $local_tasks[Constants::PARAGRAPHS_LIB_LISTING_ROUTE]['title'] = t('@title', ['title' => Constants::PAGE_COMPONENT_LIST_LABEL]);
+    $local_tasks[Constants::PARAGRAPHS_LIB_LISTING_ROUTE]['title'] = t('@title', ['@title' => Constants::PAGE_COMPONENT_LIST_LABEL]);
   }
 }
 
@@ -84,10 +84,10 @@ function localgov_page_components_entity_type_alter(array &$entity_types) {
     return;
   }
 
-  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label', t('@label', ['label' => Constants::PAGE_COMPONENT_LABEL]));
-  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label_collection', t('@label', ['label' => Constants::PAGE_COMPONENT_LIST_LABEL]));
-  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label_singular', t('@label', ['label' => Constants::PAGE_COMPONENT_LABEL]));
-  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label_plural', t('@label', ['label' => Constants::PAGE_COMPONENT_LIST_LABEL]));
+  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label', t('@label', ['@label' => Constants::PAGE_COMPONENT_LABEL]));
+  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label_collection', t('@label', ['@label' => Constants::PAGE_COMPONENT_LIST_LABEL]));
+  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label_singular', t('@label', ['@label' => Constants::PAGE_COMPONENT_LABEL]));
+  $entity_types[Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID]->set('label_plural', t('@label', ['@label' => Constants::PAGE_COMPONENT_LIST_LABEL]));
 }
 
 /**
@@ -100,7 +100,7 @@ function localgov_page_components_views_pre_render(ViewExecutable $view) {
   $is_paragraphs_lib_list_view = ($view->id() === Constants::PARAGRAPHS_LIB_LIST_VIEW_ID);
   $is_paragraphs_lib_list_view_page_display = ($view->current_display === Constants::PARAGRAPHS_LIB_LIST_VIEW_DISPLAY_ID);
   if ($is_paragraphs_lib_list_view and $is_paragraphs_lib_list_view_page_display) {
-    $view->setTitle(t('@title', ['title' => Constants::PAGE_COMPONENT_LIST_LABEL]));
+    $view->setTitle(t('@title', ['@title' => Constants::PAGE_COMPONENT_LIST_LABEL]));
   }
 }
 
