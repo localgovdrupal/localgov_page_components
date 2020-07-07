@@ -1,5 +1,5 @@
 
-name: Test LocalGovDrupal
+name: Test LocalGov Drupal
 
 on:
   push:
