@@ -2,7 +2,7 @@ name: 'Localgov Page Components'
 type: module
 description: 'Disguise "Paragraphs library" as "Page components" for better UX.'
 core_version_requirement: ^8.9 || ^9
-package: 'LocalGovDrupal'
+package: 'LocalGov Drupal'
 dependencies:
   - entity_browser:entity_browser
   - entity_browser:entity_browser_entity_form
