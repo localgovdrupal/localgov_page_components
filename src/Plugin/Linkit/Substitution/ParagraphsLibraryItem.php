@@ -27,14 +27,14 @@ use Drupal\linkit\SubstitutionInterface;
  * the Paragraph bundle and field names :(
  *
  * For now, URL is extracted from the following Paragraph bundle and fields:
- * - Contact:field_para_contact_url
- * - Advanced_links:field_url
+ * - Contact:localgov_contact_url
+ * - Link:localgov_url
  * Paragraph library items referring to other Paragraph bundles get their own
  * entity URL.
  *
  * @Substitution(
- *   id = "paragraphs_library_item_croydon",
- *   label = @Translation("Paragraphs library item (Croydon)"),
+ *   id = "paragraphs_library_item_localgovdrupal",
+ *   label = @Translation("Page components"),
  * )
  */
 class ParagraphsLibraryItem extends PluginBase implements SubstitutionInterface {
@@ -47,8 +47,8 @@ class ParagraphsLibraryItem extends PluginBase implements SubstitutionInterface 
    * @var array
    */
   const PARAGRAPH_TO_URL_FIELD_MAPPING = [
-    'contact' => 'field_para_contact_url',
-    'advanced_links' => 'field_url',
+    'localgov_contact' => 'localgov_contact_url',
+    'localgov_link' => 'localgov_url',
   ];
 
   /**
