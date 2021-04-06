@@ -10,7 +10,8 @@ use Drupal\localgov_core\FieldRenameHelper;
 /**
  * Update Field names in localgov page components.
  *
- * Field_page_components => localgov_page_components.
+ * Field mapping between existing and new names:
+ * field_page_components => localgov_page_components.
  */
 function localgov_page_components_update_8001(&$sandbox) {
 
