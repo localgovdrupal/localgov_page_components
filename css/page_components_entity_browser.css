@@ -11,7 +11,10 @@
   /* Character code for the "Up and down arrow". */
   content: "\21c5";
 }
+.entities-list.sortable > .item-container:hover {
+  opacity: inherit;
+}
 .entities-list > .item-container {
   display: grid;
-  grid-template-columns: 3% 65% 20% 12%;
+  grid-template-columns: 3% 55% 25% 17%;
 }
