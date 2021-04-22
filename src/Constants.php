@@ -26,6 +26,6 @@ class Constants {
 
   // @see Drupal\entity_browser\Plugin\Field\FieldWidget\EntityReferenceBrowserWidget::formElement().
   const ENTITY_BROWSER_LAUNCH_BUTTON = 'entity_browser';
-  const PAGE_COMPONENT_FIELD_NAME = 'field_page_components';
+  const PAGE_COMPONENT_FIELD_NAME = 'localgov_page_components';
 
 }
