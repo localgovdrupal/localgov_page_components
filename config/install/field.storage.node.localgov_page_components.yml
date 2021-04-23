@@ -4,8 +4,8 @@ dependencies:
   module:
     - node
     - paragraphs_library
-id: node.field_page_components
-field_name: field_page_components
+id: node.localgov_page_components
+field_name: localgov_page_components
 entity_type: node
 type: entity_reference
 settings:

@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * LocalGovDrupal page components install file.
+ */
+
+use Drupal\localgov_core\FieldRenameHelper;
+
+/**
+ * Update Field names in localgov page components.
+ *
+ * Field mapping between existing and new names:
+ * field_page_components => localgov_page_components.
+ *
+ * This change creates and updates Drupal config entities.  Unless configuration
+ * is *exported* after this update, later calls to 'drush deploy' or similar
+ * will revert these changes.
+ */
+function localgov_page_components_update_8001(&$sandbox) {
+
+  // Update field_ types fields provided by localgov_page_components.
+  FieldRenameHelper::renameField('field_page_components', 'localgov_page_components', 'node');
+
+  return t('Please export your sites configuration! Config entities for localgov_page_components where updated.');
+}
