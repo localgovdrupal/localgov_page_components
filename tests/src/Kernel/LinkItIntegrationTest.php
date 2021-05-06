@@ -18,12 +18,12 @@ class LinkItIntegrationTest extends KernelTestBase {
    *
    * @var array
    */
-  public static $modules = ['localgov_page_components'];
+  protected static $modules = ['localgov_page_components'];
 
   /**
    * Integrates Page components with LinkIt.
    */
-  public function setUp() {
+  public function setUp(): void {
     parent::setUp();
 
     $this->container->get('module_installer')->install([
@@ -71,21 +71,21 @@ class LinkItIntegrationTest extends KernelTestBase {
     $linkit_suggestions_count = count($linkit_suggestions);
 
     $expected_linkit_suggestions_count = 1;
-    $this->assertEqual($linkit_suggestions_count, $expected_linkit_suggestions_count);
+    $this->assertEquals($linkit_suggestions_count, $expected_linkit_suggestions_count);
 
     // Next, search for a Contact.
     $linkit_suggestions = $matcher_plugin->execute('Baz')->getSuggestions();
     $linkit_suggestions_count = count($linkit_suggestions);
 
     $expected_linkit_suggestions_count = 1;
-    $this->assertEqual($linkit_suggestions_count, $expected_linkit_suggestions_count);
+    $this->assertEquals($linkit_suggestions_count, $expected_linkit_suggestions_count);
 
     // Lastly, search for both Link and Contact.
     $linkit_suggestions = $matcher_plugin->execute('Test Paragraph')->getSuggestions();
     $linkit_suggestions_count = count($linkit_suggestions);
 
     $expected_linkit_suggestions_count = 2;
-    $this->assertEqual($linkit_suggestions_count, $expected_linkit_suggestions_count);
+    $this->assertEquals($linkit_suggestions_count, $expected_linkit_suggestions_count);
   }
 
   /**
