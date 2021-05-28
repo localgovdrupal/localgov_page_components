@@ -26,6 +26,8 @@ function localgov_page_components_update_8001(&$sandbox) {
 }
 
 function localgov_page_components_install($is_syncing) {
+
+  // Check that the Linkit Module exists
   if (!Drupal::service('module_handler')->moduleExists('linkit')) {
     return;
   }
@@ -33,7 +35,7 @@ function localgov_page_components_install($is_syncing) {
   /** @var \Drupal\linkit\ProfileInterface $defaultLinkItProfile */
   $defaultLinkItProfile = \Drupal::service('entity_type.manager')->getStorage('linkit_profile')->load('default');
   foreach ($defaultLinkItProfile->getMatchers() as $matcher) {
-    if ($matcher -> getPluginId() == 'entity:paragraphs_library_item') {
+    if ($matcher->getPluginId() == 'entity:paragraphs_library_item') {
       return;
     }
 

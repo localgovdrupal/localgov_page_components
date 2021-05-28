@@ -28,7 +28,6 @@ class LinkItIntegrationTest extends KernelTestBase {
 
   protected static $modules = ['localgov_page_components'];
 
-
   /**
    * Integrates Page components with LinkIt.
    */
