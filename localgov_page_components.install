@@ -26,6 +26,10 @@ function localgov_page_components_update_8001(&$sandbox) {
 }
 
 function localgov_page_components_install($is_syncing) {
+  if (!Drupal::service('module_handler')->moduleExists('linkit')) {
+    return;
+  }
+
   /** @var \Drupal\linkit\ProfileInterface $defaultLinkItProfile */
   $defaultLinkItProfile = \Drupal::service('entity_type.manager')->getStorage('linkit_profile')->load('default');
   foreach ($defaultLinkItProfile->getMatchers() as $matcher) {
