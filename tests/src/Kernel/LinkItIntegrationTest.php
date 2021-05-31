@@ -14,18 +14,15 @@ use Drupal\paragraphs_library\Entity\LibraryItem;
 class LinkItIntegrationTest extends KernelTestBase {
 
   /**
-   * Modules to enable.
-   *
-   * @var array
-   */
-
-  public static $modules = [];
-
-  /**
+   * Linkit Suggestion Manager.
    * @var \Drupal\linkit\SuggestionManager
    */
   private $suggestionManager;
 
+  /**
+   * Modules to enable.
+   * @var string[]
+   */
   protected static $modules = ['localgov_page_components'];
 
   /**

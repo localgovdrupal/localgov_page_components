@@ -25,9 +25,14 @@ function localgov_page_components_update_8001(&$sandbox) {
   return t('Please export your sites configuration! Config entities for localgov_page_components where updated.');
 }
 
+/**
+ * @param $is_syncing
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
 function localgov_page_components_install($is_syncing) {
 
-  // Check that the Linkit Module exists
+  // Check that the Linkit Module exists.
   if (!Drupal::service('module_handler')->moduleExists('linkit')) {
     return;
   }
@@ -57,4 +62,3 @@ function localgov_page_components_install($is_syncing) {
   ]);
   $defaultLinkItProfile->save();
 }
-
