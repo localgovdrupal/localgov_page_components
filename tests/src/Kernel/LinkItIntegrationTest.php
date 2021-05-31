@@ -14,18 +14,25 @@ use Drupal\paragraphs_library\Entity\LibraryItem;
 class LinkItIntegrationTest extends KernelTestBase {
 
   /**
-   * Linkit Suggestion Manager.
+   * LinkIt profile.
+   *
+   * @var \Drupal\linkit\ProfileInterface
+   */
+  protected $defaultLinkItProfile;
+
+  /**
+   * UUID value assigned to our custom Matcher.
+   *
+   * @var string
+   */
+  protected $pageComponentMatcherUuid = '';
+
+  /**
+   * LinkIt Suggestion Manager.
    *
    * @var \Drupal\linkit\SuggestionManager
    */
   private $suggestionManager;
-
-  /**
-   * Modules to enable.
-   *
-   * @var string[]
-   */
-  protected static $modules = ['localgov_page_components'];
 
   /**
    * Integrates Page components with LinkIt.
@@ -105,19 +112,5 @@ class LinkItIntegrationTest extends KernelTestBase {
     ]);
     $contact_page_component->save();
   }
-
-  /**
-   * LinkIt profile.
-   *
-   * @var Drupal\linkit\ProfileInterface
-   */
-  protected $defaultLinkItProfile;
-
-  /**
-   * UUID value assigned to our custom Matcher.
-   *
-   * @var string
-   */
-  protected $pageComponentMatcherUuid = '';
 
 }

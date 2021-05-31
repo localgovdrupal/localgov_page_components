@@ -30,7 +30,7 @@ function localgov_page_components_update_8001(&$sandbox) {
  *
  * @throws \Drupal\Core\Entity\EntityStorageException
  */
-function localgov_page_components_install($is_syncing) {
+function localgov_page_components_install() {
 
   // Check that the Linkit Module exists.
   if (!Drupal::service('module_handler')->moduleExists('linkit')) {
