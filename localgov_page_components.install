@@ -26,7 +26,7 @@ function localgov_page_components_update_8001(&$sandbox) {
 }
 
 /**
- * @param $is_syncing
+ * Add Linkit matcher.
  *
  * @throws \Drupal\Core\Entity\EntityStorageException
  */

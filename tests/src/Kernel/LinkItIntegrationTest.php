@@ -15,12 +15,14 @@ class LinkItIntegrationTest extends KernelTestBase {
 
   /**
    * Linkit Suggestion Manager.
+   *
    * @var \Drupal\linkit\SuggestionManager
    */
   private $suggestionManager;
 
   /**
    * Modules to enable.
+   *
    * @var string[]
    */
   protected static $modules = ['localgov_page_components'];
