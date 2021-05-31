@@ -45,7 +45,10 @@ class LinkItIntegrationTest extends KernelTestBase {
       'node',
       'linkit',
     ]);
-    $this->container->get('module_installer')->install(['localgov_paragraphs', 'localgov_page_components']);
+    $this->container->get('module_installer')->install([
+      'localgov_paragraphs',
+      'localgov_page_components'
+    ]);
 
     // Integrate Page components with LinkIt.
     $this->defaultLinkItProfile = $this->container->get('entity_type.manager')->getStorage('linkit_profile')->load('default');
