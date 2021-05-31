@@ -47,7 +47,7 @@ class LinkItIntegrationTest extends KernelTestBase {
     ]);
     $this->container->get('module_installer')->install([
       'localgov_paragraphs',
-      'localgov_page_components'
+      'localgov_page_components',
     ]);
 
     // Integrate Page components with LinkIt.
