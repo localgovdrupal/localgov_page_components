@@ -14,11 +14,25 @@ use Drupal\paragraphs_library\Entity\LibraryItem;
 class LinkItIntegrationTest extends KernelTestBase {
 
   /**
-   * Modules to enable.
+   * LinkIt profile.
    *
-   * @var array
+   * @var \Drupal\linkit\ProfileInterface
    */
-  protected static $modules = ['localgov_page_components'];
+  protected $defaultLinkItProfile;
+
+  /**
+   * UUID value assigned to our custom Matcher.
+   *
+   * @var string
+   */
+  protected $pageComponentMatcherUuid = '';
+
+  /**
+   * LinkIt Suggestion Manager.
+   *
+   * @var \Drupal\linkit\SuggestionManager
+   */
+  private $suggestionManager;
 
   /**
    * Integrates Page components with LinkIt.
@@ -31,27 +45,15 @@ class LinkItIntegrationTest extends KernelTestBase {
       'node',
       'linkit',
     ]);
-    $this->container->get('module_installer')->install(['localgov_paragraphs']);
+    $this->container->get('module_installer')->install([
+      'localgov_paragraphs',
+      'localgov_page_components',
+    ]);
 
     // Integrate Page components with LinkIt.
     $this->defaultLinkItProfile = $this->container->get('entity_type.manager')->getStorage('linkit_profile')->load('default');
-    $this->assertNotEmpty($this->defaultLinkItProfile);
+    $this->suggestionManager = $this->container->get('linkit.suggestion_manager');
 
-    $this->pageComponentMatcherUuid = $this->defaultLinkItProfile->addMatcher([
-      'id' => 'entity:paragraphs_library_item',
-      'weight' => 0,
-      'settings' => [
-        'metadata' => '',
-        'bundles'  => [
-          'localgov_contact' => 'localgov_contact',
-          'localgov_link' => 'localgov_link',
-        ],
-        'group_by_bundle' => TRUE,
-        'substitution_type' => 'paragraphs_library_item_localgovdrupal',
-        'limit' => 20,
-      ],
-    ]);
-    $this->defaultLinkItProfile->save();
   }
 
   /**
@@ -64,24 +66,22 @@ class LinkItIntegrationTest extends KernelTestBase {
 
     $this->addLinkAndContactPageComponents();
 
-    $matcher_plugin = $this->defaultLinkItProfile->getMatcher($this->pageComponentMatcherUuid);
-
     // First, search for a Link.
-    $linkit_suggestions = $matcher_plugin->execute('Foo')->getSuggestions();
+    $linkit_suggestions = $this->suggestionManager->getSuggestions($this->defaultLinkItProfile, 'Foo')->getSuggestions();
     $linkit_suggestions_count = count($linkit_suggestions);
 
     $expected_linkit_suggestions_count = 1;
     $this->assertEquals($linkit_suggestions_count, $expected_linkit_suggestions_count);
 
     // Next, search for a Contact.
-    $linkit_suggestions = $matcher_plugin->execute('Baz')->getSuggestions();
+    $linkit_suggestions = $this->suggestionManager->getSuggestions($this->defaultLinkItProfile, 'Baz')->getSuggestions();
     $linkit_suggestions_count = count($linkit_suggestions);
 
     $expected_linkit_suggestions_count = 1;
     $this->assertEquals($linkit_suggestions_count, $expected_linkit_suggestions_count);
 
     // Lastly, search for both Link and Contact.
-    $linkit_suggestions = $matcher_plugin->execute('Test Paragraph')->getSuggestions();
+    $linkit_suggestions = $this->suggestionManager->getSuggestions($this->defaultLinkItProfile, 'Test Paragraph')->getSuggestions();
     $linkit_suggestions_count = count($linkit_suggestions);
 
     $expected_linkit_suggestions_count = 2;
@@ -115,19 +115,5 @@ class LinkItIntegrationTest extends KernelTestBase {
     ]);
     $contact_page_component->save();
   }
-
-  /**
-   * LinkIt profile.
-   *
-   * @var Drupal\linkit\ProfileInterface
-   */
-  protected $defaultLinkItProfile;
-
-  /**
-   * UUID value assigned to our custom Matcher.
-   *
-   * @var string
-   */
-  protected $pageComponentMatcherUuid = '';
 
 }
