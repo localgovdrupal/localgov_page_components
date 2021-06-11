@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraphs_library_item.embedded
+    - entity_browser.browser.page_components_for_wysiwyg
+  module:
+    - entity_embed
+    - paragraphs_library
+label: 'Page component'
+id: page_component
+type_id: entity
+type_settings:
+  entity_type: paragraphs_library_item
+  bundles: {  }
+  display_plugins:
+    - 'view_mode:paragraphs_library_item.embedded'
+  entity_browser: page_components_for_wysiwyg
+  entity_browser_settings:
+    display_review: false
+icon:
+  data: iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAblJREFUOBGNU02OAWEQfc2H7kHEX4hEWLrDTCSuYLZO4BqOIBmxcgIHMLEza3sbEiL+w0qLv55+lWksekQl3f3l63qvql5VabVazVqtVrher3jFTNOEYRjweDyIxWLQJpOJdTweYVnWK3hsNhvE43FomgafzwfVarUwnU6F8c7gkGm3KwYgyDT30HVDMs5kMtC22611Pp/l5837yWG9XiORSEjGSimoRuMLvd6PqwaMms/nUCwW8f7+AWY7Ho8RCoWEIJVKQXU63+j3+/8SDIdDW7Q3lMufqFQqWCwWIh6T9Pv9UHxRWZbhZuwOU93tduh2u5jNZpIBfaPRKJTX63XD3e4oHH10XbfLySMQCCASiYhmwWAQnpvnCweS0R6/6pX+0+dwOGA0GknLw+GwiMhBUhyiZ2UQTH2YdqlUEg0IpLEcVSgUZLoul4tcPr4IzuVySKfTGAwGaLfbmM/nAqSfjDIHyQ3sEDklshv0Yxs5yjRpY71ex3K5dJ0DOpGAwNPpJJGpBZeJQiaTSWj2ZMky0fmZUYf9fi+Po4Fk0Gw2YW+kLJPTHjvuH9d9mbi+2WwW1WpVIjvBfgEtOdkcU4aJ3AAAAABJRU5ErkJggg==
+  uri: 'public://embed_buttons/paragraph.png'
+icon_uuid: null
