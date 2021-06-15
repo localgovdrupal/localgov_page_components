@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.paragraphs_library_browser
+  module:
+    - entity_browser_entity_form
+    - views
+name: page_components_for_wysiwyg
+label: 'Page components for WYSIWYG'
+display: iframe
+display_configuration:
+  width: '1185'
+  height: '746'
+  link_text: 'Select Page components'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  7da16125-6711-4239-8b57-b9816aacbea5:
+    settings:
+      view: paragraphs_library_browser
+      view_display: entity_browser
+      submit_text: 'Select Page component'
+      auto_select: false
+    uuid: 7da16125-6711-4239-8b57-b9816aacbea5
+    weight: 1
+    label: 'Available Page components'
+    id: view
+  1004df02-eee4-413f-ba2a-5116fd38e010:
+    settings:
+      entity_type: paragraphs_library_item
+      bundle: paragraphs_library_item
+      form_mode: default
+      submit_text: 'Save Page component'
+    uuid: 1004df02-eee4-413f-ba2a-5116fd38e010
+    weight: 2
+    label: 'Create Page component'
+    id: entity_form
