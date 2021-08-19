@@ -32,5 +32,8 @@ It is possible to embed Page components from within the WYSIWYG.  This is an *op
 - *Save configuration*.
 - If this text format is later selected when editing a textarea, the Page component embed button should appear in the WYSIWYG's toolbar.
 
+#### Troubleshooting
+If a Page component's markup does not conform to CKEditor's DTD rules, the embedded page component markup will break.  To avoid this, extend the DTD rules.  The [bundled CKEditor plugin](js/ckeditor-plugins/localgov_page_components/plugin.js) serves as an example.
+
 ## Known issues
 Some Page component edit forms (e.g. localgov_documents) try to open a modal.  This leads to a modal within a modal scenario which doesn't work.  The work around is to edit such Page components from their own edit page.  These can be looked up from  */admin/content/paragraphs*.

@@ -29,6 +29,10 @@ function localgov_page_components_update_8001(&$sandbox) {
  * Implements hook_install().
  */
 function localgov_page_components_install($is_syncing) {
+  $has_linkit = \Drupal::service('entity_type.manager')->hasDefinition('linkit_profile');
+  if (!$has_linkit) {
+    return;
+  }
 
   /** @var \Drupal\linkit\ProfileInterface $defaultLinkItProfile */
   $defaultLinkItProfile = \Drupal::service('entity_type.manager')->getStorage('linkit_profile')->load('default');
