@@ -150,3 +150,24 @@ function localgov_page_components_field_widget_multivalue_entity_browser_entity_
     $element['entity_browser']['#weight'] = 10;
   }
 }
+
+/**
+ * Implements hook_preprocess_entity_embed_container().
+ *
+ * Inserts the "data-quickedit-entity-id" attribute into the entity embed
+ * container div.  This attribute points to the embedded page component entity.
+ * This is needed as a workaround for a *core bug*.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3101267
+ */
+function localgov_page_components_preprocess_entity_embed_container(&$vars) {
+  $has_quickedit = Drupal::service('module_handler')->moduleExists('quickedit');
+  $embedded_entity = $vars['element']['#entity'];
+  $embedded_entity_type = $embedded_entity->getEntityType()->id();
+  $has_embedded_page_component = $embedded_entity_type === Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID;
+
+  if ($has_quickedit and $has_embedded_page_component) {
+    $page_component = $embedded_entity;
+    $vars['attributes']['data-quickedit-entity-id'] = Constants::PARAGRAPHS_LIB_ENTITY_TYPE_ID . '/' . $page_component->id();
+  }
+}
