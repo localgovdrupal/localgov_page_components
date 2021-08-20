@@ -7,8 +7,15 @@
     "minimum-stability": "dev",
     "require": {
         "drupal/entity_browser": "^2.5",
-	    "drupal/inline_entity_form": "^1.0-rc6",
+        "drupal/inline_entity_form": "^1.0-rc6",
         "drupal/linkit": "^6.0-beta1",
         "drupal/paragraphs": "^1.11"
+    },
+    "extra": {
+        "patches": {
+            "drupal/entity_browser": {
+                "Entity browser assumes all forms on the route `entity_browser.edit_form` are entity browser forms #3130500": "https://www.drupal.org/files/issues/2020-04-24/3130500.patch"
+            }
+        }
     }
 }
