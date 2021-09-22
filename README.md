@@ -37,6 +37,3 @@ For best results, ensure CKEditor is [loading stylesheets](https://www.drupal.or
 
 #### Troubleshooting
 An embedded Page component's markup can break if it does not conform to CKEditor's DTD rules.  If this happens, extend the DTD rules.  The [bundled CKEditor plugin](js/ckeditor-plugins/localgov_page_components/plugin.js) serves as an example.
-
-## Known issues
-Some Page component edit forms (e.g. localgov_documents) try to open a modal.  This leads to a modal within a modal scenario which doesn't work.  The work around is to edit such Page components from their own edit page.  These can be looked up from  */admin/content/paragraphs*.
