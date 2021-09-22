@@ -8,24 +8,6 @@
 use Drupal\localgov_core\FieldRenameHelper;
 
 /**
- * Update Field names in localgov page components.
- *
- * Field mapping between existing and new names:
- * field_page_components => localgov_page_components.
- *
- * This change creates and updates Drupal config entities.  Unless configuration
- * is *exported* after this update, later calls to 'drush deploy' or similar
- * will revert these changes.
- */
-function localgov_page_components_update_8001(&$sandbox) {
-
-  // Update field_ types fields provided by localgov_page_components.
-  FieldRenameHelper::renameField('field_page_components', 'localgov_page_components', 'node');
-
-  return t('Please export your sites configuration! Config entities for localgov_page_components where updated.');
-}
-
-/**
  * Implements hook_install().
  */
 function localgov_page_components_install($is_syncing) {
@@ -62,4 +44,46 @@ function localgov_page_components_install($is_syncing) {
     ],
   ]);
   $defaultLinkItProfile->save();
+}
+
+/**
+ * Update Field names in localgov page components.
+ *
+ * Field mapping between existing and new names:
+ * field_page_components => localgov_page_components.
+ *
+ * This change creates and updates Drupal config entities.  Unless configuration
+ * is *exported* after this update, later calls to 'drush deploy' or similar
+ * will revert these changes.
+ */
+function localgov_page_components_update_8001(&$sandbox) {
+
+  // Update field_ types fields provided by localgov_page_components.
+  FieldRenameHelper::renameField('field_page_components', 'localgov_page_components', 'node');
+
+  return t('Please export your sites configuration! Config entities for localgov_page_components where updated.');
+}
+
+/**
+ * Imports new optional config.
+ *
+ * Installs new dependency module and imports new optional config files.
+ */
+function localgov_page_components_update_8102(&$sandbox) {
+
+  try {
+    Drupal::service('module_installer')->install(['entity_embed']);
+
+    Drupal::service('config.installer')->installOptionalConfig();
+  }
+  catch (Exception $e) {
+    throw new UpdateException($e->getMessage());
+  }
+
+  $is_terminal = PHP_SAPI === 'cli' && getenv('TERM');
+  [$magenta, $colour_off] = $is_terminal ? ["\033[35m", "\033[0m"] : ['', ''];
+  return t('%magenta Please export site configuration.  New config entities added for the localgov_page_components module.%colour_off', [
+    '%magenta'    => $magenta,
+    '%colour_off' => $colour_off,
+  ]);
 }
