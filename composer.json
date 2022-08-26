@@ -13,9 +13,6 @@
     },
     "extra": {
         "patches": {
-            "drupal/entity_browser": {
-                "Entity browser assumes all forms on the route `entity_browser.edit_form` are entity browser forms #3130500": "https://www.drupal.org/files/issues/2020-04-24/3130500.patch"
-            }
         }
     }
 }
