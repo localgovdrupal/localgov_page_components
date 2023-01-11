@@ -38,23 +38,26 @@ function localgov_page_components_help($route_name, RouteMatchInterface $route_m
  * Implements hook_localgov_roles_default().
  */
 function localgov_page_components_localgov_roles_default(): array {
-
-  $perms = [
-    RolesHelper::EDITOR_ROLE => [
-      'access page_components entity browser pages',
-      'access paragraphs_library_items entity browser pages',
-    ],
-    RolesHelper::AUTHOR_ROLE => [
-      'access page_components entity browser pages',
-      'access paragraphs_library_items entity browser pages',
-    ],
-    RolesHelper::CONTRIBUTOR_ROLE => [
-      'access page_components entity browser pages',
-      'access paragraphs_library_items entity browser pages',
-    ],
+  $permissions =  [
+    RolesHelper::EDITOR_ROLE => [],
+    RolesHelper::AUTHOR_ROLE => [],
+    RolesHelper::CONTRIBUTOR_ROLE => [],
   ];
-}
 
+  // Add entity browser permissions.
+  if (\Drupal::configFactory()->get('entity_browser.browser.page_components')->getRawData()) {
+    $permissions[RolesHelper::EDITOR_ROLE][] = 'access page_components entity browser pages';
+    $permissions[RolesHelper::AUTHOR_ROLE][] = 'access page_components entity browser pages';
+    $permissions[RolesHelper::CONTRIBUTOR_ROLE][] = 'access page_components entity browser pages';
+  }
+  if (\Drupal::configFactory()->get('entity_browser.browser.paragraphs_library_items')->getRawData()) {
+    $permissions[RolesHelper::EDITOR_ROLE][] = 'access paragraphs_library_items entity browser pages';
+    $permissions[RolesHelper::AUTHOR_ROLE][] = 'access paragraphs_library_items entity browser pages';
+    $permissions[RolesHelper::CONTRIBUTOR_ROLE][] = 'access paragraphs_library_items entity browser pages';
+  }
+
+  return $permissions;
+}
 
 /**
  * Implements hook_menu_links_discovered_alter().
