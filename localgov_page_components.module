@@ -38,7 +38,7 @@ function localgov_page_components_help($route_name, RouteMatchInterface $route_m
  * Implements hook_localgov_roles_default().
  */
 function localgov_page_components_localgov_roles_default(): array {
-  $permissions =  [
+  $permissions = [
     RolesHelper::EDITOR_ROLE => [],
     RolesHelper::AUTHOR_ROLE => [],
     RolesHelper::CONTRIBUTOR_ROLE => [],
