@@ -125,7 +125,7 @@ function localgov_page_components_views_pre_render(ViewExecutable $view) {
 
   $is_paragraphs_lib_list_view = ($view->id() === Constants::PARAGRAPHS_LIB_LIST_VIEW_ID);
   $is_paragraphs_lib_list_view_page_display = ($view->current_display === Constants::PARAGRAPHS_LIB_LIST_VIEW_DISPLAY_ID);
-  if ($is_paragraphs_lib_list_view and $is_paragraphs_lib_list_view_page_display) {
+  if ($is_paragraphs_lib_list_view && $is_paragraphs_lib_list_view_page_display) {
     $view->setTitle(t('@title', ['@title' => Constants::PAGE_COMPONENT_LIST_LABEL]));
   }
 }
