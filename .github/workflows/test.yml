@@ -29,8 +29,8 @@ jobs:
             drupal-version: '~9.4'
             php-version: '8.1'
           - localgov-version: '3.x'
-            drupal-version: '~10.0'
-            php-version: '8.1'
+            drupal-version: '~10.1'
+            php-version: '8.2'
 
     steps:
 
@@ -113,8 +113,8 @@ jobs:
             drupal-version: '~9.4'
             php-version: '8.1'
           - localgov-version: '3.x'
-            drupal-version: '~10.0'
-            php-version: '8.1'
+            drupal-version: '~10.1'
+            php-version: '8.2'
 
     steps:
 
@@ -149,8 +149,8 @@ jobs:
             drupal-version: '~9.4'
             php-version: '8.1'
           - localgov-version: '3.x'
-            drupal-version: '~10.0'
-            php-version: '8.1'
+            drupal-version: '~10.1'
+            php-version: '8.2'
 
     steps:
 
@@ -184,8 +184,8 @@ jobs:
             drupal-version: '~9.4'
             php-version: '8.1'
           - localgov-version: '3.x'
-            drupal-version: '~10.0'
-            php-version: '8.1'
+            drupal-version: '~10.1'
+            php-version: '8.2'
 
     steps:
 
