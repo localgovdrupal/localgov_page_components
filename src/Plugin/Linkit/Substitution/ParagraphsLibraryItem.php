@@ -1,13 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\localgov_page_components\Plugin\Linkit\Substitution;
 
 use Drupal\Component\Plugin\PluginBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\GeneratedUrl;
+use Drupal\Core\Url;
 use Drupal\linkit\SubstitutionInterface;
 
 /**
@@ -60,8 +60,8 @@ class ParagraphsLibraryItem extends PluginBase implements SubstitutionInterface 
   public function getUrl(EntityInterface $paragraphs_library_item) {
 
     $uri        = NULL;
-    $empty_uri  = (new GeneratedUrl)->setGeneratedUrl('');
-    $entity_uri = $paragraphs_library_item->toUrl('canonical')->toString(TRUE);
+    $empty_uri  = Url::fromUri('base:');
+    $entity_uri = $paragraphs_library_item->toUrl('canonical');
 
     $paragraph_bundle = $paragraphs_library_item->paragraphs->entity->getType();
     $is_unknown_bundle = !array_key_exists($paragraph_bundle, self::PARAGRAPH_TO_URL_FIELD_MAPPING);
@@ -77,10 +77,10 @@ class ParagraphsLibraryItem extends PluginBase implements SubstitutionInterface 
       $uri = $empty_uri;
     }
     elseif ($fieldtype === 'link') {
-      $uri = $paragraphs_library_item->paragraphs->entity->{$fieldname}[0]->getUrl()->toString(TRUE);
+      $uri = $paragraphs_library_item->paragraphs->entity->{$fieldname}[0]->getUrl();
     }
     elseif ($fieldtype === 'string') {
-      $uri = (new GeneratedUrl)->setGeneratedUrl($paragraphs_library_item->paragraphs->entity->{$fieldname}->value);
+      $uri = Url::fromUri($paragraphs_library_item->paragraphs->entity->{$fieldname}->value);
     }
     else {
       $uri = $entity_uri;

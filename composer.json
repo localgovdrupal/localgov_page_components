@@ -8,7 +8,7 @@
     "require": {
         "drupal/entity_browser": "^2.5",
         "drupal/inline_entity_form": "^1.0-rc6",
-        "drupal/linkit": "^6.0-beta1",
+        "drupal/linkit": "~6.0.2 || ^6.1.1",
         "drupal/paragraphs": "^1.11"
     },
     "extra": {
