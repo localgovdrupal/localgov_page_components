@@ -167,7 +167,7 @@ class PageComponentMatcher extends EntityMatcher {
       return FALSE;
     }
 
-    $is_a_target_paragraph_bundle = in_array($paragraph_bundle, $this->configuration['bundles']);
+    $is_a_target_paragraph_bundle = in_array($paragraph_bundle, $this->configuration['bundles'], TRUE);
     return $is_a_target_paragraph_bundle;
   }
 
