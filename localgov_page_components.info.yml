@@ -1,4 +1,4 @@
-name: 'Localgov Page Components'
+name: 'LocalGov Page Components'
 type: module
 description: 'Disguise "Paragraphs library" as "Page components" for better UX.'
 core_version_requirement: ^10
